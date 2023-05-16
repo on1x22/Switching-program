@@ -1,0 +1,37 @@
+﻿<Window x:Class="WpfApplication1.PersonalOption"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication1"
+        mc:Ignorable="d"
+        Title="PersonalOption" Height="300" Width="600" Loaded="Window_Loaded">
+    <Grid Name="mainGrid" ShowGridLines="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="150"/>            
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>            
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <DataGrid Name="dataGrid1" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" CanUserSortColumns="False" AutoGenerateColumns="False" ItemsSource="{Binding listOfTablePers}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Организация (объект переключений)" Binding="{Binding organisationOfPersonal}" />
+                <DataGridTextColumn Header="Фамилия, инициалы" Binding="{Binding Path=nameOfPerson1, Mode=TwoWay}" Width="3*"/>
+                <DataGridTextColumn Header="Должность" Binding="{Binding Path=role1, Mode=TwoWay}" Width="3*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid Name="dataGrid2" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HeadersVisibility="None" CanUserSortColumns="False" AutoGenerateColumns="False" ItemsSource="{Binding listOfSOPers}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="" Binding="{Binding action}" FontWeight="Bold"/>
+                <DataGridTextColumn Header="" Binding="{Binding Path=role, Mode=TwoWay}"/>
+                <DataGridTextColumn Header="" Binding="{Binding Path=nameOfPerson, Mode=TwoWay}"/>                
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Name="button2" Content="Ok" Grid.Column="1" Grid.Row="5" Click="button2_Click"/>
+    </Grid>
+</Window>
